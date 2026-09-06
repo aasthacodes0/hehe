@@ -36,9 +36,12 @@ export function FooterSection() {
           <div className="grid grid-cols-2 md:grid-cols-6 gap-12 lg:gap-8">
             {/* Brand Column */}
             <div className="col-span-2 md:col-span-3">
-              <a href="#" className="inline-flex items-center gap-2 mb-6">
-                <span className="text-2xl font-display">Aastha</span>
-                <span className="text-xs text-muted-foreground font-mono">✦</span>
+              <a href="#" className="inline-flex items-center gap-3 mb-6">
+                <img src="/image.png" alt="Aastha Profile" className="w-12 h-12 rounded-full object-cover border border-foreground/10" />
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl font-display">Aastha</span>
+                  <span className="text-xs text-muted-foreground font-mono">✦</span>
+                </div>
               </a>
 
               <p className="text-muted-foreground leading-relaxed mb-8 max-w-xs">
