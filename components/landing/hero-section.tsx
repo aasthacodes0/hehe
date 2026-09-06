@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { AnimatedSphere } from "./animated-sphere";
 
-const words = ["create", "build", "scale", "ship"];
+const roles = ["design", "code", "edit"];
 
 export function HeroSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -17,13 +17,13 @@ export function HeroSection() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setWordIndex((prev) => (prev + 1) % words.length);
+      setWordIndex((prev) => (prev + 1) % roles.length);
     }, 2500);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden">
+    <section id="about" className="relative min-h-screen flex flex-col justify-center overflow-hidden">
       {/* Animated sphere background */}
       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] lg:w-[800px] lg:h-[800px] opacity-40 pointer-events-none">
         <AnimatedSphere />
@@ -64,7 +64,7 @@ export function HeroSection() {
         >
           <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground">
             <span className="w-8 h-px bg-foreground/30" />
-            The platform for modern teams
+            Designer · Developer · Video Editor
           </span>
         </div>
         
@@ -75,15 +75,15 @@ export function HeroSection() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            <span className="block">The platform</span>
+            <span className="block">Hi, I&apos;m</span>
             <span className="block">
-              to{" "}
+              Aastha.{" "}
               <span className="relative inline-block">
                 <span 
                   key={wordIndex}
                   className="inline-flex"
                 >
-                  {words[wordIndex].split("").map((char, i) => (
+                  {roles[wordIndex].split("").map((char, i) => (
                     <span
                       key={`${wordIndex}-${i}`}
                       className="inline-block animate-char-in"
@@ -108,8 +108,7 @@ export function HeroSection() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            Your toolkit to stop configuring and start innovating. 
-            Securely build, deploy, and scale the best experiences.
+            I craft beautiful digital experiences — from intuitive UI/UX in Figma to clean, efficient code and cinematic video edits.
           </p>
           
           {/* CTAs */}
@@ -121,23 +120,25 @@ export function HeroSection() {
             <Button 
               size="lg" 
               className="bg-foreground hover:bg-foreground/90 text-background px-8 h-14 text-base rounded-full group"
+              onClick={() => document.getElementById("work")?.scrollIntoView({ behavior: "smooth" })}
             >
-              Start free trial
+              See my work
               <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
             </Button>
             <Button 
               size="lg" 
               variant="outline" 
               className="h-14 px-8 text-base rounded-full border-foreground/20 hover:bg-foreground/5"
+              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
             >
-              Watch demo
+              Get in touch
             </Button>
           </div>
         </div>
         
       </div>
       
-      {/* Stats marquee - full width outside container */}
+      {/* Skills marquee */}
       <div 
         className={`absolute bottom-24 left-0 right-0 transition-all duration-700 delay-500 ${
           isVisible ? "opacity-100" : "opacity-0"
@@ -147,10 +148,10 @@ export function HeroSection() {
           {[...Array(2)].map((_, i) => (
             <div key={i} className="flex gap-16">
               {[
-                { value: "20 days", label: "saved on builds", company: "NETFLIX" },
-                { value: "98%", label: "faster deployment", company: "STRIPE" },
-                { value: "300%", label: "throughput increase", company: "LINEAR" },
-                { value: "6x", label: "faster to ship", company: "NOTION" },
+                { value: "Figma", label: "UI/UX Design", company: "DESIGN" },
+                { value: "React", label: "Frontend Dev", company: "CODE" },
+                { value: "DSA", label: "Problem Solving", company: "LOGIC" },
+                { value: "Premiere", label: "Video Editing", company: "CREATE" },
               ].map((stat) => (
                 <div key={`${stat.company}-${i}`} className="flex items-baseline gap-4">
                   <span className="text-4xl lg:text-5xl font-display">{stat.value}</span>
@@ -164,8 +165,6 @@ export function HeroSection() {
           ))}
         </div>
       </div>
-      
-      {/* Scroll indicator */}
       
     </section>
   );

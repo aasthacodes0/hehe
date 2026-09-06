@@ -2,19 +2,19 @@
 
 import { useEffect, useState, useRef } from "react";
 
-const integrations = [
-  { name: "GitHub", category: "Version Control" },
-  { name: "Slack", category: "Communication" },
-  { name: "Stripe", category: "Payments" },
-  { name: "PostgreSQL", category: "Database" },
-  { name: "Redis", category: "Cache" },
-  { name: "AWS", category: "Cloud" },
-  { name: "MongoDB", category: "Database" },
-  { name: "Vercel", category: "Hosting" },
-  { name: "Figma", category: "Design" },
-  { name: "Linear", category: "Project Management" },
-  { name: "Notion", category: "Documentation" },
-  { name: "OpenAI", category: "AI/ML" },
+const projects = [
+  { name: "UX Case Study", category: "UI/UX Design", year: "2024" },
+  { name: "Portfolio Site", category: "Development", year: "2024" },
+  { name: "Brand Identity", category: "Figma", year: "2024" },
+  { name: "Short Film Edit", category: "Video Editing", year: "2023" },
+  { name: "DSA Visualizer", category: "Development", year: "2023" },
+  { name: "Motion Reel", category: "Video Editing", year: "2023" },
+  { name: "App Redesign", category: "UI/UX Design", year: "2024" },
+  { name: "Algorithm Art", category: "Development", year: "2024" },
+  { name: "Travel Vlog", category: "Video Editing", year: "2023" },
+  { name: "Design System", category: "Figma", year: "2024" },
+  { name: "React Dashboard", category: "Development", year: "2024" },
+  { name: "Content Reel", category: "Video Editing", year: "2024" },
 ];
 
 export function IntegrationsSection() {
@@ -34,7 +34,7 @@ export function IntegrationsSection() {
   }, []);
 
   return (
-    <section id="integrations" ref={sectionRef} className="relative py-24 lg:py-32 overflow-hidden">
+    <section id="projects" ref={sectionRef} className="relative py-24 lg:py-32 overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
         {/* Header */}
         <div
@@ -44,16 +44,16 @@ export function IntegrationsSection() {
         >
           <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
             <span className="w-8 h-px bg-foreground/30" />
-            Integrations
+            Selected work
             <span className="w-8 h-px bg-foreground/30" />
           </span>
           <h2 className="text-4xl lg:text-6xl font-display tracking-tight mb-6">
-            Works with everything
+            Things I&apos;ve made.
             <br />
-            you already use.
+            <span className="text-muted-foreground">Across design &amp; code.</span>
           </h2>
           <p className="text-xl text-muted-foreground">
-            200+ pre-built integrations. Connect your entire stack in minutes.
+            A mix of design projects, code experiments, and video creations.
           </p>
         </div>
 
@@ -64,15 +64,18 @@ export function IntegrationsSection() {
         <div className="flex gap-6 marquee">
           {[...Array(2)].map((_, setIndex) => (
             <div key={setIndex} className="flex gap-6 shrink-0">
-              {integrations.map((integration) => (
+              {projects.map((project) => (
                 <div
-                  key={`${integration.name}-${setIndex}`}
+                  key={`${project.name}-${setIndex}`}
                   className="shrink-0 px-8 py-6 border border-foreground/10 hover:border-foreground/30 hover:bg-foreground/[0.02] transition-all duration-300 group"
                 >
                   <div className="text-lg font-medium group-hover:translate-x-1 transition-transform">
-                    {integration.name}
+                    {project.name}
                   </div>
-                  <div className="text-sm text-muted-foreground">{integration.category}</div>
+                  <div className="flex items-center justify-between gap-6">
+                    <div className="text-sm text-muted-foreground">{project.category}</div>
+                    <div className="text-xs font-mono text-muted-foreground/60">{project.year}</div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -85,15 +88,18 @@ export function IntegrationsSection() {
         <div className="flex gap-6 marquee-reverse">
           {[...Array(2)].map((_, setIndex) => (
             <div key={setIndex} className="flex gap-6 shrink-0">
-              {[...integrations].reverse().map((integration) => (
+              {[...projects].reverse().map((project) => (
                 <div
-                  key={`${integration.name}-reverse-${setIndex}`}
+                  key={`${project.name}-reverse-${setIndex}`}
                   className="shrink-0 px-8 py-6 border border-foreground/10 hover:border-foreground/30 hover:bg-foreground/[0.02] transition-all duration-300 group"
                 >
                   <div className="text-lg font-medium group-hover:translate-x-1 transition-transform">
-                    {integration.name}
+                    {project.name}
                   </div>
-                  <div className="text-sm text-muted-foreground">{integration.category}</div>
+                  <div className="flex items-center justify-between gap-6">
+                    <div className="text-sm text-muted-foreground">{project.category}</div>
+                    <div className="text-xs font-mono text-muted-foreground/60">{project.year}</div>
+                  </div>
                 </div>
               ))}
             </div>

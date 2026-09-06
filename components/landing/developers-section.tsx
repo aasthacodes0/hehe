@@ -1,56 +1,39 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Copy, Check } from "lucide-react";
+import { Copy, Check, Mail, ExternalLink } from "lucide-react";
 
-const codeExamples = [
+const contactInfo = [
   {
-    label: "Install",
-    code: `npm install @optimus/sdk
-
-# or
-yarn add @optimus/sdk
-pnpm add @optimus/sdk`,
+    label: "Email",
+    code: `aastha@email.com`,
   },
   {
-    label: "Initialize",
-    code: `import { Optimus } from '@optimus/sdk'
-
-const optimus = new Optimus({
-  apiKey: process.env.OPTIMUS_KEY
-})`,
+    label: "LinkedIn",
+    code: `linkedin.com/in/aastha`,
   },
   {
-    label: "Deploy",
-    code: `const app = await optimus.deploy({
-  name: 'my-app',
-  region: 'auto',
-  scaling: {
-    min: 1,
-    max: 100
-  }
-})
-
-console.log('Live at:', app.url)`,
+    label: "GitHub",
+    code: `github.com/aastha`,
   },
 ];
 
-const features = [
+const highlights = [
   { 
-    title: "TypeScript native", 
-    description: "Full type safety with auto-generated types."
+    title: "Open to internships", 
+    description: "Looking for design & dev roles."
   },
   { 
-    title: "Zero config", 
-    description: "Sensible defaults that just work."
+    title: "Freelance projects", 
+    description: "Available for select collaborations."
   },
   { 
-    title: "Edge-ready", 
-    description: "Runs anywhere: Node, Deno, Bun, browsers."
+    title: "Quick responder", 
+    description: "I reply within 24 hours."
   },
   { 
-    title: "12KB gzipped", 
-    description: "Lightweight with zero dependencies."
+    title: "Based in India", 
+    description: "Open to remote worldwide."
   },
 ];
 
@@ -89,7 +72,7 @@ export function DevelopersSection() {
   const sectionRef = useRef<HTMLElement>(null);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(codeExamples[activeTab].code);
+    navigator.clipboard.writeText(contactInfo[activeTab].code);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -107,7 +90,7 @@ export function DevelopersSection() {
   }, []);
 
   return (
-    <section id="developers" ref={sectionRef} className="relative py-24 lg:py-32 overflow-hidden">
+    <section id="contact" ref={sectionRef} className="relative py-24 lg:py-32 overflow-hidden">
       <style dangerouslySetInnerHTML={{ __html: codeAnimationStyles }} />
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
@@ -119,36 +102,35 @@ export function DevelopersSection() {
           >
             <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
               <span className="w-8 h-px bg-foreground/30" />
-              For developers
+              Get in touch
             </span>
             <h2 className="text-4xl lg:text-6xl font-display tracking-tight mb-8">
-              Built by devs.
+              Let&apos;s work
               <br />
-              <span className="text-muted-foreground">For devs.</span>
+              <span className="text-muted-foreground">together.</span>
             </h2>
             <p className="text-xl text-muted-foreground mb-12 leading-relaxed">
-              A thoughtfully designed SDK that gets out of your way. 
-              Ship faster with intuitive APIs and exceptional documentation.
+              Whether you have a project in mind, a collab idea, or just want to say hi — my inbox is always open.
             </p>
             
-            {/* Features */}
+            {/* Highlights */}
             <div className="grid grid-cols-2 gap-6">
-              {features.map((feature, index) => (
+              {highlights.map((item, index) => (
                 <div
-                  key={feature.title}
+                  key={item.title}
                   className={`transition-all duration-500 ${
                     isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                   }`}
                   style={{ transitionDelay: `${index * 50 + 200}ms` }}
                 >
-                  <h3 className="font-medium mb-1">{feature.title}</h3>
-                  <p className="text-sm text-muted-foreground">{feature.description}</p>
+                  <h3 className="font-medium mb-1">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground">{item.description}</p>
                 </div>
               ))}
             </div>
           </div>
           
-          {/* Right: Code block */}
+          {/* Right: Contact block */}
           <div
             className={`lg:sticky lg:top-32 transition-all duration-700 delay-200 ${
               isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
@@ -157,9 +139,9 @@ export function DevelopersSection() {
             <div className="border border-foreground/10">
               {/* Tabs */}
               <div className="flex items-center border-b border-foreground/10">
-                {codeExamples.map((example, idx) => (
+                {contactInfo.map((info, idx) => (
                   <button
-                    key={example.label}
+                    key={info.label}
                     type="button"
                     onClick={() => setActiveTab(idx)}
                     className={`px-6 py-4 text-sm font-mono transition-colors relative ${
@@ -168,7 +150,7 @@ export function DevelopersSection() {
                         : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
-                    {example.label}
+                    {info.label}
                     {activeTab === idx && (
                       <span className="absolute bottom-0 left-0 right-0 h-px bg-foreground" />
                     )}
@@ -179,7 +161,7 @@ export function DevelopersSection() {
                   type="button"
                   onClick={handleCopy}
                   className="px-4 py-4 text-muted-foreground hover:text-foreground transition-colors"
-                  aria-label="Copy code"
+                  aria-label="Copy contact info"
                 >
                   {copied ? (
                     <Check className="w-4 h-4 text-green-600" />
@@ -189,42 +171,24 @@ export function DevelopersSection() {
                 </button>
               </div>
               
-              {/* Code content */}
-              <div className="p-8 font-mono text-sm bg-foreground/[0.01] min-h-[220px]">
-                <pre className="text-foreground/80">
-                  {codeExamples[activeTab].code.split('\n').map((line, lineIndex) => (
-                    <div 
-                      key={`${activeTab}-${lineIndex}`} 
-                      className="leading-loose dev-code-line"
-                      style={{ animationDelay: `${lineIndex * 80}ms` }}
-                    >
-                      <span className="inline-flex">
-                        {line.split('').map((char, charIndex) => (
-                          <span
-                            key={`${activeTab}-${lineIndex}-${charIndex}`}
-                            className="dev-code-char"
-                            style={{
-                              animationDelay: `${lineIndex * 80 + charIndex * 15}ms`,
-                            }}
-                          >
-                            {char === ' ' ? '\u00A0' : char}
-                          </span>
-                        ))}
-                      </span>
-                    </div>
-                  ))}
-                </pre>
+              {/* Contact content */}
+              <div className="p-8 font-mono text-sm bg-foreground/[0.01] min-h-[120px] flex items-center">
+                <div className="text-foreground/80 text-lg">
+                  {contactInfo[activeTab].code}
+                </div>
               </div>
             </div>
             
             {/* Links */}
             <div className="mt-6 flex items-center gap-6 text-sm">
-              <a href="#" className="text-foreground hover:underline underline-offset-4">
-                Read the docs
+              <a href="mailto:aastha@email.com" className="text-foreground hover:underline underline-offset-4 flex items-center gap-2">
+                <Mail className="w-4 h-4" />
+                Send email
               </a>
               <span className="text-foreground/20">|</span>
-              <a href="#" className="text-muted-foreground hover:text-foreground">
-                View on GitHub
+              <a href="https://linkedin.com/in/aastha" className="text-muted-foreground hover:text-foreground flex items-center gap-2">
+                <ExternalLink className="w-4 h-4" />
+                LinkedIn
               </a>
             </div>
           </div>

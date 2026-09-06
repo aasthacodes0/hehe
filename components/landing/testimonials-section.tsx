@@ -4,32 +4,32 @@ import { useEffect, useState } from "react";
 
 const testimonials = [
   {
-    quote: "Optimus transformed our deployment pipeline. What used to take hours now happens in seconds.",
-    author: "Sarah Chen",
-    role: "CTO",
-    company: "Meridian Labs",
-    metric: "10x faster deployments",
-  },
-  {
-    quote: "The developer experience is unmatched. Our team's productivity has never been higher.",
-    author: "Marcus Webb",
-    role: "Engineering Lead",
-    company: "Flux Systems",
-    metric: "40% more features shipped",
-  },
-  {
-    quote: "Finally, infrastructure that scales with our ambition. Zero downtime since we switched.",
-    author: "Elena Rodriguez",
-    role: "VP Engineering",
-    company: "Beacon AI",
-    metric: "99.99% uptime",
-  },
-  {
-    quote: "The integrations are seamless. We connected our entire stack in a single afternoon.",
-    author: "James Liu",
+    quote: "Aastha has an incredible eye for detail. Her designs aren't just beautiful, they're thoughtful and user-centric.",
+    author: "Client Name",
     role: "Founder",
-    company: "Prism Analytics",
-    metric: "50+ integrations used",
+    company: "Tech Startup",
+    metric: "Design",
+  },
+  {
+    quote: "Working with Aastha was a breeze. She quickly understood our requirements and delivered code that was both clean and robust.",
+    author: "Engineering Lead",
+    role: "Senior Dev",
+    company: "Software Agency",
+    metric: "Development",
+  },
+  {
+    quote: "The video edits were exactly what we were looking for. Great pacing, excellent color grading, and perfect music synchronization.",
+    author: "Content Creator",
+    role: "Director",
+    company: "Media Co",
+    metric: "Video",
+  },
+  {
+    quote: "A rare talent who can bridge the gap between design and engineering effortlessly. Highly recommended.",
+    author: "Product Manager",
+    role: "PM",
+    company: "Product Studio",
+    metric: "UI/UX & Code",
   },
 ];
 
@@ -56,7 +56,7 @@ export function TestimonialsSection() {
         {/* Section Label */}
         <div className="flex items-center gap-4 mb-16">
           <span className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-            What people say
+            Kind Words
           </span>
           <div className="flex-1 h-px bg-foreground/10" />
           <span className="font-mono text-xs text-muted-foreground">
@@ -105,7 +105,7 @@ export function TestimonialsSection() {
               }`}
             >
               <span className="font-mono text-xs tracking-widest text-muted-foreground uppercase block mb-4">
-                Key Result
+                Domain
               </span>
               <p className="font-display text-3xl md:text-4xl text-foreground">
                 {activeTestimonial.metric}
@@ -135,32 +135,7 @@ export function TestimonialsSection() {
           </div>
         </div>
 
-        {/* Company Logos Marquee Label */}
-        <div className="mt-24 pt-12 border-t border-foreground/10">
-          <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase mb-8 text-center">
-            Trusted by forward-thinking teams
-          </p>
-        </div>
-      </div>
-      
-      {/* Full-width marquee outside container */}
-      <div className="w-full">
-        <div className="flex gap-16 items-center marquee">
-          {[...Array(2)].map((_, setIdx) => (
-            <div key={setIdx} className="flex gap-16 items-center shrink-0">
-              {["Meridian Labs", "Flux Systems", "Beacon AI", "Prism Analytics", "Nova Tech", "Quantum Corp", "Atlas Digital", "Vertex Labs"].map(
-                (company) => (
-                  <span
-                    key={`${setIdx}-${company}`}
-                    className="font-display text-xl md:text-2xl text-foreground/30 whitespace-nowrap hover:text-foreground transition-colors duration-300"
-                  >
-                    {company}
-                  </span>
-                )
-              )}
-            </div>
-          ))}
-        </div>
+        {/* Removed company marquee to focus on the individual */}
       </div>
     </section>
   );

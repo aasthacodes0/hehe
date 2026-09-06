@@ -2,41 +2,47 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const steps = [
+const process = [
   {
     number: "I",
-    title: "Connect your tools",
-    description: "Integrate with your existing stack in minutes. We support 200+ data sources out of the box.",
-    code: `import { optimus } from '@optimus/core'
+    title: "Discover & Define",
+    description: "Every great project starts with understanding. I research, empathize, and map out goals so the design solves the right problem.",
+    code: `// Understanding the problem space
+const project = {
+  users: research.empathize(),
+  goals: stakeholder.define(),
+  constraints: audit.current(),
+}
 
-optimus.connect({
-  source: 'your-database',
-  sync: true
-})`,
+// Build the foundation
+project.strategy = synthesize(project)`,
   },
   {
     number: "II",
-    title: "Build your workflow",
-    description: "Design powerful automations with our visual builder or write code directly.",
-    code: `optimus.workflow('process', {
-  trigger: 'event',
-  actions: [
-    'validate',
-    'transform', 
-    'deliver'
-  ]
-})`,
+    title: "Design & Prototype",
+    description: "From rough sketches to pixel-perfect Figma prototypes. I iterate fast, validate early, and polish until every interaction feels right.",
+    code: `// Figma design system
+const design = figma.create({
+  components: buildSystem(),
+  tokens: { color, spacing, type },
+  prototype: interactions.wire(),
+})
+
+// Rapid iteration
+design.test().iterate().ship()`,
   },
   {
     number: "III",
-    title: "Ship to production",
-    description: "Deploy globally with zero configuration. Your app goes live in under 30 seconds.",
-    code: `optimus.deploy({
-  target: 'production',
-  regions: 'auto'
+    title: "Build & Ship",
+    description: "Bringing designs to life with clean, maintainable code. I bridge the gap between design and engineering to deliver production-ready experiences.",
+    code: `// From design to production
+const app = react.build({
+  components: design.handoff(),
+  animations: smooth.transitions(),
+  performance: optimize(),
 })
 
-// Deployed to 12 regions`,
+// Live & breathing ✦`,
   },
 ];
 
@@ -59,14 +65,14 @@ export function HowItWorksSection() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveStep((prev) => (prev + 1) % steps.length);
+      setActiveStep((prev) => (prev + 1) % process.length);
     }, 5000);
     return () => clearInterval(interval);
   }, []);
 
   return (
     <section
-      id="how-it-works"
+      id="work"
       ref={sectionRef}
       className="relative py-24 lg:py-32 bg-foreground text-background overflow-hidden"
     >
@@ -88,16 +94,16 @@ export function HowItWorksSection() {
         <div className="mb-16 lg:mb-24">
           <span className="inline-flex items-center gap-3 text-sm font-mono text-background/50 mb-6">
             <span className="w-8 h-px bg-background/30" />
-            Process
+            My process
           </span>
           <h2
             className={`text-4xl lg:text-6xl font-display tracking-tight transition-all duration-700 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            Three steps.
+            How I work.
             <br />
-            <span className="text-background/50">Infinite possibilities.</span>
+            <span className="text-background/50">From idea to reality.</span>
           </h2>
         </div>
 
@@ -105,7 +111,7 @@ export function HowItWorksSection() {
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Steps */}
           <div className="space-y-0">
-            {steps.map((step, index) => (
+            {process.map((step, index) => (
               <button
                 key={step.number}
                 type="button"
@@ -151,13 +157,13 @@ export function HowItWorksSection() {
                   <div className="w-3 h-3 rounded-full bg-background/20" />
                   <div className="w-3 h-3 rounded-full bg-background/20" />
                 </div>
-                <span className="text-xs font-mono text-background/40">workflow.ts</span>
+                <span className="text-xs font-mono text-background/40">aastha.ts</span>
               </div>
 
               {/* Code content */}
               <div className="p-8 font-mono text-sm min-h-[280px]">
                 <pre className="text-background/70">
-                  {steps[activeStep].code.split('\n').map((line, lineIndex) => (
+                  {process[activeStep].code.split('\n').map((line, lineIndex) => (
                     <div 
                       key={`${activeStep}-${lineIndex}`} 
                       className="leading-loose code-line-reveal"
@@ -187,7 +193,7 @@ export function HowItWorksSection() {
               {/* Status */}
               <div className="px-6 py-4 border-t border-background/10 flex items-center gap-3">
                 <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                <span className="text-xs font-mono text-background/40">Ready</span>
+                <span className="text-xs font-mono text-background/40">Available for work</span>
               </div>
             </div>
           </div>
